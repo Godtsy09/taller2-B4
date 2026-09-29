@@ -1,0 +1,110 @@
+<section class="formulario-container">
+  <header class="form-header">
+    <h1>REGISTRO DE PRODUCTO</h1>
+    <p class="subtitle">SISTEMA DE INVENTARIO // NIGHT CITY MARKET</p>
+  </header>
+
+  <form [formGroup]="form" (ngSubmit)="guardarProducto()" class="form-grid" novalidate>
+
+    <div class="form-group">
+      <label for="nombre">NOMBRE DEL PRODUCTO</label>
+      <input
+        type="text"
+        id="nombre"
+        formControlName="nombre"
+        placeholder="Ej: Cyberdeck Mk.7"
+        [class.invalid]="f['nombre'].invalid && (f['nombre'].touched || f['nombre'].dirty)"
+        autocomplete="off"
+      />
+      <div class="errores" *ngIf="f['nombre'].invalid && (f['nombre'].touched || f['nombre'].dirty)">
+        <span *ngFor="let error of getErrores('nombre')">{{ error }}</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">DESCRIPCIÓN</label>
+      <textarea
+        id="descripcion"
+        formControlName="descripcion"
+        rows="4"
+        placeholder="Especificaciones técnicas, características, estado..."
+        [class.invalid]="f['descripcion'].invalid && (f['descripcion'].touched || f['descripcion'].dirty)"
+      ></textarea>
+      <div class="errores" *ngIf="f['descripcion'].invalid && (f['descripcion'].touched || f['descripcion'].dirty)">
+        <span *ngFor="let error of getErrores('descripcion')">{{ error }}</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="precio">PRECIO (EDDIES)</label>
+      <input
+        type="number"
+        id="precio"
+        formControlName="precio"
+        step="0.01"
+        min="0.01"
+        placeholder="0.00"
+        [class.invalid]="f['precio'].invalid && (f['precio'].touched || f['precio'].dirty)"
+      />
+      <div class="errores" *ngIf="f['precio'].invalid && (f['precio'].touched || f['precio'].dirty)">
+        <span *ngFor="let error of getErrores('precio')">{{ error }}</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="categoria">CATEGORÍA</label>
+      <select
+        id="categoria"
+        formControlName="categoria"
+        [class.invalid]="f['categoria'].invalid && (f['categoria'].touched || f['categoria'].dirty)"
+      >
+        <option value="" disabled>SELECCIONAR CATEGORÍA</option>
+        <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+      </select>
+      <div class="errores" *ngIf="f['categoria'].invalid && (f['categoria'].touched || f['categoria'].dirty)">
+        <span *ngFor="let error of getErrores('categoria')">{{ error }}</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="stock">STOCK DISPONIBLE</label>
+      <input
+        type="number"
+        id="stock"
+        formControlName="stock"
+        min="0"
+        step="1"
+        placeholder="0"
+        [class.invalid]="f['stock'].invalid && (f['stock'].touched || f['stock'].dirty)"
+      />
+      <div class="errores" *ngIf="f['stock'].invalid && (f['stock'].touched || f['stock'].dirty)">
+        <span *ngFor="let error of getErrores('stock')">{{ error }}</span>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button
+        type="submit"
+        class="btn-submit"
+        [disabled]="enviando()"
+      >
+        <span *ngIf="!enviando()">REGISTRAR PRODUCTO</span>
+        <span *ngIf="enviando()">PROCESANDO...</span>
+      </button>
+      <button
+        type="button"
+        class="btn-reset"
+        (click)="form.reset(); mensajeExito.set('')"
+        [disabled]="enviando()"
+      >
+        LIMPIAR
+      </button>
+    </div>
+
+  </form>
+
+  <div class="mensaje-exito" *ngIf="mensajeExito()">
+    {{ mensajeExito() }}
+  </div>
+
+</section>

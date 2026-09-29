@@ -1,0 +1,89 @@
+<main class="tienda-container">
+  <header class="tienda-hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        NIGHT CITY MARKET
+      </div>
+      <h1 class="hero-title">
+        <span class="glitch" data-text="TU PROVEEDOR DE TECH">TU PROVEEDOR DE TECH</span>
+      </h1>
+      <p class="hero-subtitle">Ilegal y legal en el borde de la ley</p>
+      <div class="hero-divider">
+        <span class="divider-line"></span>
+        <span class="divider-center">◆</span>
+        <span class="divider-line"></span>
+      </div>
+      <p class="hero-vision">
+        "Conectando runners, netrunners y fixers con el mejor gear del 2077.<br>
+        Sin preguntas, solo eddies."
+      </p>
+    </div>
+  </header>
+
+  <section class="catalogo-section">
+    <div class="section-header">
+      <h2 class="section-title">CATÁLOGO DE INVENTARIO</h2>
+      <div class="section-stats">
+        <span class="stat">
+          <span class="stat-value">{{ productos().length }}</span>
+          <span class="stat-label">ITEMS</span>
+        </span>
+        <span class="stat">
+          <span class="stat-value">{{ getTotalStock() }}</span>
+          <span class="stat-label">UNIDADES</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="catalogo-grid" *ngIf="!cargando() && productos().length > 0">
+      <article class="producto-card" *ngFor="let producto of productos(); trackBy: trackById">
+        <div class="card-header">
+          <span class="producto-id">ID: {{ producto.id?.toString().padStart(4, '0') }}</span>
+          <span class="producto-rareza" [ngClass]="getRareza(producto.stock).class">
+            {{ getRareza(producto.stock).label }}
+          </span>
+        </div>
+
+        <h3 class="producto-nombre">{{ producto.nombre }}</h3>
+
+        <p class="producto-categoria">
+          <span class="cat-tag">[{{ producto.categoria.toUpperCase() }}]</span>
+        </p>
+
+        <p class="producto-descripcion">{{ producto.descripcion }}</p>
+
+        <div class="card-footer">
+          <div class="producto-precio">
+            <span class="precio-label">PRECIO</span>
+            <span class="precio-valor">{{ formatearPrecio(producto.precio) }}</span>
+          </div>
+          <div class="producto-stock">
+            <span class="stock-label">STOCK</span>
+            <span class="stock-valor" [class.bajo]="producto.stock <= 5">{{ producto.stock }}</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="estado-vacio" *ngIf="!cargando() && productos().length === 0">
+      <div class="vacio-icon">◈</div>
+      <h3>BASE DE DATOS VACÍA</h3>
+      <p>No hay productos registrados en el sistema.</p>
+      <a routerLink="/registro" class="btn-ir-registro">
+        <span>REGISTRAR PRIMER PRODUCTO</span>
+        <span class="btn-arrow">▶</span>
+      </a>
+    </div>
+
+    <div class="estado-cargando" *ngIf="cargando()">
+      <div class="loader">
+        <div class="loader-ring"></div>
+        <div class="loader-ring"></div>
+        <div class="loader-ring"></div>
+      </div>
+      <p>ACCEDIENDO A LA BASE DE DATOS...</p>
+    </div>
+  </section>
+</main>

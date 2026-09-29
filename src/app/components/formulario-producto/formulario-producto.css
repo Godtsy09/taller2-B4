@@ -1,0 +1,255 @@
+.formulario-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  background: linear-gradient(145deg, #0d0d1a 0%, #1a1a2e 50%, #0d0d1a 100%);
+  border: 1px solid #00ffff33;
+  border-radius: 12px;
+  box-shadow:
+    0 0 30px rgba(0, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.formulario-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00ffff, #ff00ff, #ffff00, #00ffff);
+  background-size: 300% 100%;
+  animation: neon-shift 4s linear infinite;
+}
+
+@keyframes neon-shift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #00ffff22;
+}
+
+.form-header h1 {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  letter-spacing: 0.15em;
+  margin: 0 0 0.5rem;
+}
+
+.subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: #888;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.form-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #00ffff;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(10, 10, 26, 0.8);
+  border: 1px solid #00ffff33;
+  border-radius: 6px;
+  padding: 0.875rem 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  color: #e0e0e0;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #555;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: #00ffff66;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #00ffff;
+  box-shadow:
+    0 0 0 2px rgba(0, 255, 255, 0.15),
+    0 0 15px rgba(0, 255, 255, 0.1);
+  background: rgba(15, 15, 35, 0.95);
+}
+
+.form-group input.invalid,
+.form-group select.invalid,
+.form-group textarea.invalid {
+  border-color: #ff0066;
+  box-shadow: 0 0 0 2px rgba(255, 0, 102, 0.15);
+}
+
+.form-group input.invalid:focus,
+.form-group select.invalid:focus,
+.form-group textarea.invalid:focus {
+  border-color: #ff0066;
+  box-shadow:
+    0 0 0 2px rgba(255, 0, 102, 0.2),
+    0 0 15px rgba(255, 0, 102, 0.1);
+}
+
+.errores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: #ff0066;
+  padding: 0.25rem 0;
+}
+
+.errores span {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 0, 102, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ff006633;
+}
+
+.errores span::before {
+  content: '⚠';
+  font-size: 0.7rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #00ffff22;
+}
+
+.btn-submit,
+.btn-reset {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #00ffff 0%, #00cccc 100%);
+  color: #0a0a0f;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: linear-gradient(135deg, #33ffff 0%, #00ffff 100%);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-reset {
+  background: transparent;
+  color: #00ffff;
+  border: 1px solid #00ffff44;
+}
+
+.btn-reset:hover:not(:disabled) {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: #00ffff;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+}
+
+.btn-reset:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mensaje-exito {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.15) 0%, rgba(0, 200, 100, 0.1) 100%);
+  border: 1px solid #00ff88;
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: #00ff88;
+  text-align: center;
+  animation: slideIn 0.3s ease;
+  line-height: 1.5;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .formulario-container {
+    padding: 1.5rem 1rem;
+    margin: 0 0.5rem;
+  }
+
+  .form-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+}

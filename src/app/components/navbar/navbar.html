@@ -1,0 +1,40 @@
+<nav class="navbar" role="navigation" aria-label="Navegación principal">
+  <div class="nav-container">
+    <a routerLink="/registro" class="nav-brand" aria-label="Inicio - Night City Market">
+      <span class="brand-icon">▲</span>
+      <span class="brand-text">NIGHT CITY MARKET</span>
+    </a>
+
+    <ul class="nav-links">
+      <li>
+        <a
+          routerLink="/registro"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="nav-link"
+        >
+          <span class="link-icon">◈</span>
+          <span class="link-text">REGISTRO</span>
+          <span class="link-underline"></span>
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/tienda"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="nav-link"
+        >
+          <span class="link-icon">◈</span>
+          <span class="link-text">TIENDA</span>
+          <span class="link-underline"></span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="nav-status">
+      <span class="status-dot"></span>
+      <span class="status-text">ONLINE</span>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,51 @@
+<footer class="footer" role="contentinfo">
+  <div class="footer-container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <span class="footer-icon">▼</span>
+        <span class="footer-name">NIGHT CITY MARKET</span>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-info">
+        <p class="footer-project">
+          <span class="label">PROYECTO:</span>
+          <span class="value">Sistema de Registro de Productos - Actividad 2</span>
+        </p>
+        <p class="footer-student">
+          <span class="label">DESARROLLADO POR:</span>
+          <span class="value">Jefferson Juarez</span>
+        </p>
+        <p class="footer-year">
+          <span class="label">AÑO:</span>
+          <span class="value">{{ currentYear }}</span>
+        </p>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-links">
+        <a routerLink="/registro" class="footer-link">
+          <span class="link-arrow">◀</span>
+          REGISTRO
+        </a>
+        <a routerLink="/tienda" class="footer-link">
+          TIENDA
+          <span class="link-arrow">▶</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="copyright">
+        © {{ currentYear }} NIGHT CITY MARKET — TODOS LOS DERECHOS RESERVADO
+      </div>
+      <div class="footer-terminal">
+        <span class="prompt">root@nightcity:~#</span>
+        <span class="command">_system_status --online</span>
+        <span class="status-ok">[ OK ]</span>
+      </div>
+    </div>
+  </div>
+</footer>
